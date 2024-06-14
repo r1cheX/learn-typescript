@@ -1,5 +1,9 @@
-import { twoSum } from "./leetcode/problem-01";
 
-twoSum([1,2,3,4], 9)
+const id = null
+const object: unknown = {
+    id,
+    number: 4
+}
 
 
+console.log('debugging value-->', object);

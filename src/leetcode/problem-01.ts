@@ -17,8 +17,9 @@
 // give me the declaration of the method
 
 export function twoSum(nums: number[], target: number): number[] {
-    const aea = 2;
     return [0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 }
 
 
+const sumIndices = twoSum([2, 7, 11, 15], 9); // [0, 1]
+console.log('debugging sumIndices-->', sumIndices);
