@@ -4,21 +4,18 @@ interface TransportStrategy {
   goToAirport(): string;
 }
 
-// 🚌 Estrategia 1: Autobús
 class TransporteAutobus implements TransportStrategy {
   goToAirport(): string {
     return "🚌 Viajando al aeropuerto en autobús...";
   }
 }
 
-// 🚕 Estrategia 2: Taxi
 class TransporteTaxi implements TransportStrategy {
   goToAirport(): string {
     return "🚕 Viajando al aeropuerto en taxi...";
   }
 }
 
-// 🚲 Estrategia 3: Bicicleta
 class TransporteBicicleta implements TransportStrategy {
   goToAirport(): string {
     return "🚲 Pedaleando hacia el aeropuerto...";
