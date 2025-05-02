@@ -8,7 +8,7 @@ enum TransportType {
 
 class Traveler {
   name: string;
-  transportType: TransportType;
+  transportType: TransportType; // Fuerte acoplamiento
 
   constructor(name: string, transportType: TransportType) {
     this.name = name;
@@ -25,6 +25,7 @@ class Traveler {
     } else if (this.transportType === TransportType.BICYCLE) {
       console.log("- � Pedaleando hacia el aeropuerto...");
     } 
+    // ... Violando principio O/C 
   }
 }
 

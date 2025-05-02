@@ -1,9 +1,12 @@
 // * Good Example
 
+
+// * 1. Interfaz estrategia
 interface TransportStrategy {
   goToAirport(): string;
 }
 
+// * 2. Estrategias concretas
 class BusTransport implements TransportStrategy {
   goToAirport(): string {
     return "� Viajando al aeropuerto en autobús...";
@@ -25,25 +28,28 @@ class BicycleTransport implements TransportStrategy {
 // * Context
 class TravelerContext {
   private name: string;
-  private strategy: TransportStrategy;
+  private strategy: TransportStrategy; // Referencia 
 
   constructor(name: string, strategy: TransportStrategy) {
     this.name = name;
     this.strategy = strategy;
   }
 
+  // * setter modificador - tiempo ejecución
   changeStrategy(newStrategy: TransportStrategy): void {
     this.strategy = newStrategy;
   }
 
-  // * Delega el trabajo a un objeto estrategia
+  // * Delega el trabajo a un objeto estrategia 
+  // * No conoce detalles internos
   goToAirport(): void {
     console.log(`${this.name} necesita ir al aeropuerto:`);
     console.log(`- ${this.strategy.goToAirport()}`);
   }
 }
 
-// * Client
+
+// * Client - elige estrategia concreta y pasa al contexto
 function goodImplementationExampleTransport(): void {
   const bus = new BusTransport();
   const taxi = new TaxiTransport();
@@ -61,8 +67,8 @@ function goodImplementationExampleTransport(): void {
   const maria = new TravelerContext("María", bus);
   maria.goToAirport();
 
-  console.log("� CAMBIO DE PLANES: A Juan se le acaba el dinero");
-  juan.changeStrategy(bus);
+  console.log(" CAMBIO DE PLANES: A Juan se le acaba el dinero 😱");
+  juan.changeStrategy(bus);  // Cambia tiempo de ejecución
   juan.goToAirport();
 }
 
