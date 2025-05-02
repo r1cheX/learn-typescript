@@ -3,7 +3,7 @@
 enum TransportType {
   BUS = 'autobus',
   TAXI = 'taxi',
-  BICYCLE = 'bicicleta'
+  BICYCLE = 'bicicleta',
 }
 
 class Traveler {
@@ -24,7 +24,7 @@ class Traveler {
       console.log("- � Viajando al aeropuerto en taxi...");
     } else if (this.transportType === TransportType.BICYCLE) {
       console.log("- � Pedaleando hacia el aeropuerto...");
-    }
+    } 
   }
 }
 

@@ -6,22 +6,23 @@ interface TransportStrategy {
 
 class BusTransport implements TransportStrategy {
   goToAirport(): string {
-    return "🚍 Viajando al aeropuerto en autobús...";
+    return "� Viajando al aeropuerto en autobús...";
   }
 }
 
 class TaxiTransport implements TransportStrategy {
   goToAirport(): string {
-    return "🚕 Viajando al aeropuerto en taxi...";
+    return "� Viajando al aeropuerto en taxi...";
   }
 }
 
 class BicycleTransport implements TransportStrategy {
   goToAirport(): string {
-    return "🚲 Pedaleando hacia el aeropuerto...";
+    return "� Pedaleando hacia el aeropuerto...";
   }
 }
 
+// * Context
 class TravelerContext {
   private name: string;
   private strategy: TransportStrategy;
@@ -35,22 +36,24 @@ class TravelerContext {
     this.strategy = newStrategy;
   }
 
+  // * Delega el trabajo a un objeto estrategia
   goToAirport(): void {
     console.log(`${this.name} necesita ir al aeropuerto:`);
     console.log(`- ${this.strategy.goToAirport()}`);
   }
 }
 
+// * Client
 function goodImplementationExampleTransport(): void {
   const bus = new BusTransport();
   const taxi = new TaxiTransport();
   const bicycle = new BicycleTransport();
 
-  console.log("💡 SITUACIÓN: Ana tiene poco dinero pero mucho tiempo");
+  console.log("� SITUACIÓN: Ana tiene poco dinero pero mucho tiempo");
   const ana = new TravelerContext("Ana", bicycle);
   ana.goToAirport();
 
-  console.log("💡 SITUACIÓN: Juan tiene poco tiempo y suficiente dinero");
+  console.log("� SITUACIÓN: Juan tiene poco tiempo y suficiente dinero");
   const juan = new TravelerContext("Juan", taxi);
   juan.goToAirport();
 
@@ -58,7 +61,7 @@ function goodImplementationExampleTransport(): void {
   const maria = new TravelerContext("María", bus);
   maria.goToAirport();
 
-  console.log("🔄 CAMBIO DE PLANES: A Juan se le acaba el dinero");
+  console.log("� CAMBIO DE PLANES: A Juan se le acaba el dinero");
   juan.changeStrategy(bus);
   juan.goToAirport();
 }

@@ -8,13 +8,13 @@ enum PaymentTypeEnum {
 }
 
 // Strategy Interface - defines the contract for all payment strategies
-interface PaymentStrategy {
+interface PaymentStrategyFFactory {
   processPayment(amount: number, data: any): boolean;
   getDescription(): string;
 }
 
 // Concrete Strategy implementations
-class CreditCardStrategy implements PaymentStrategy {
+class CreditCardStrategy implements PaymentStrategyFFactory {
   processPayment(amount: number, data: any): boolean {
     console.log(`Processing $${amount} via Credit Card (${data.cardNumber})`);
     return true;
@@ -25,7 +25,7 @@ class CreditCardStrategy implements PaymentStrategy {
   }
 }
 
-class PayPalStrategy implements PaymentStrategy {
+class PayPalStrategy implements PaymentStrategyFFactory {
   processPayment(amount: number, data: any): boolean {
     console.log(`Processing $${amount} via PayPal (${data.email})`);
     return true;
@@ -36,7 +36,7 @@ class PayPalStrategy implements PaymentStrategy {
   }
 }
 
-class BankTransferStrategy implements PaymentStrategy {
+class BankTransferStrategy implements PaymentStrategyFFactory {
   processPayment(amount: number, data: any): boolean {
     console.log(`Processing $${amount} via Bank Transfer (${data.accountNumber})`);
     return true;
@@ -48,8 +48,8 @@ class BankTransferStrategy implements PaymentStrategy {
 }
 
 // Strategy Factory - creates and returns the appropriate payment strategy
-class PaymentStrategyFactory {
-  getStrategy(paymentType: PaymentTypeEnum): PaymentStrategy {
+class PaymentStrategyFFactoryFactory {
+  getStrategy(paymentType: PaymentTypeEnum): PaymentStrategyFFactory {
     switch (paymentType) {
       case PaymentTypeEnum.CREDIT_CARD:
         return new CreditCardStrategy();
@@ -65,24 +65,24 @@ class PaymentStrategyFactory {
 
 // Client class that uses the factory and strategy
 class Checkout {
-  private paymentStrategy: PaymentStrategy | null = null;
+  private paymentStrategyFactoryPaymentStrategyFFactory: PaymentStrategyFFactory | null = null;
   
-  constructor(private paymentStrategyFactory: PaymentStrategyFactory) {}
+  constructor(private paymentStrategyFactoryPaymentStrategyFFactoryFactory: PaymentStrategyFFactoryFactory) {}
 
   // Set payment strategy based on selected payment type
   setPaymentMethod(paymentType: PaymentTypeEnum): void {
-    this.paymentStrategy = this.paymentStrategyFactory.getStrategy(paymentType);
-    console.log(`Payment method set to: ${this.paymentStrategy.getDescription()}`);
+    this.paymentStrategyFactoryPaymentStrategyFFactory = this.paymentStrategyFactoryPaymentStrategyFFactoryFactory.getStrategy(paymentType);
+    console.log(`Payment method set to: ${this.paymentStrategyFactoryPaymentStrategyFFactory.getDescription()}`);
   }
 
   // Process payment using the selected strategy
   pay(amount: number, paymentData: any): void {
-    if (!this.paymentStrategy) {
+    if (!this.paymentStrategyFactoryPaymentStrategyFFactory) {
       console.error('Payment method not selected!');
       return;
     }
     
-    const success = this.paymentStrategy.processPayment(amount, paymentData);
+    const success = this.paymentStrategyFactoryPaymentStrategyFFactory.processPayment(amount, paymentData);
     if (success) {
       console.log('Payment processed successfully!');
     } else {
@@ -95,7 +95,7 @@ class Checkout {
 function runExample(): void {
   console.log('✅ COMBINED STRATEGY AND FACTORY PATTERN EXAMPLE');
   
-  const factory = new PaymentStrategyFactory();
+  const factory = new PaymentStrategyFFactoryFactory();
   const checkout = new Checkout(factory);
   
   console.log('\n💡 SCENARIO: Credit Card payment');
