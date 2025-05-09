@@ -82,6 +82,7 @@ class User {
 const userPerson = new User("Richard");
 
 console.log(userPerson.name);
+console.log(Object.getPrototypeOf(userPerson))
 console.log((userPerson as any).createdAt);
 console.log((userPerson as any).krak());
 
