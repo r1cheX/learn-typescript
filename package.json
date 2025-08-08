@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/03_leetcode/arrays_hashing/twoSum_2.ts",
+    "start": "nodemon --exec ts-node src/03_leetcode/binary_search/koko-eating-bananas.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
