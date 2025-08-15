@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/03_leetcode/binary_search/koko-eating-bananas.ts",
+    "start": "nodemon --exec ts-node src/03_leetcode/linked_list/reverse_linked_list.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
