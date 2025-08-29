@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/03_leetcode/linked_list/reorder_linked_list.ts",
+    "start": "nodemon --exec ts-node src/03_leetcode/linked_list/palindrome_linked_lists.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
